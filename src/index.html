@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<nav>
+  <div class="logo">Salon Dornstadt</div>
+  <ul class="nav-links">
+    <li><a href="#über-uns">Über uns</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>Handwerk, das begeistert.</h1>
+  <p style="margin-bottom: 2rem;">Ihr Friseur für die ganze Familie in Dornstadt.</p>
+  <a href="tel:+49734812345" class="btn">Termin vereinbaren</a>
+</header>
+
+<section id="über-uns">
+  <h2>Das Team</h2>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
+           alt="Unser Team">
+    </div>
+    <div class="about-text">
+      <h3>Herzlich Willkommen</h3>
+      <p>Mitten im Herzen von Dornstadt sorgen wir dafür, dass Sie sich rundum wohlfühlen. Unser Team besteht aus
+        erfahrenen Stylisten, die sich Zeit für Ihre individuelle Beratung nehmen.</p>
+      <br>
+      <p><strong>Inhaberin:</strong> [Name einfügen]<br>
+        <strong>Spezialität:</strong> Moderne Schnitte & Colorationen</p>
+    </div>
+  </div>
+</section>
+
+<section id="galerie" style="background-color: #fff;">
+  <h2>Inspirationen</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img
+      src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=500&q=80"
+      alt="Haarschnitt 1"></div>
+    <div class="gallery-item"><img
+      src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=80"
+      alt="Haarschnitt 2"></div>
+    <div class="gallery-item"><img
+      src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=500&q=80"
+      alt="Haarschnitt 3"></div>
+    <div class="gallery-item"><img
+      src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=500&q=80"
+      alt="Haarschnitt 4"></div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <h2>Besuchen Sie uns</h2>
+  <div class="info-wrapper">
+    <div>
+      <h3>Öffnungszeiten</h3>
+      <ul class="times-list">
+        <li><span>Montag</span> <span>Geschlossen</span></li>
+        <li><span>Dienstag</span> <span>09:00 - 18:30</span></li>
+        <li><span>Mittwoch</span> <span>09:00 - 18:30</span></li>
+        <li><span>Donnerstag</span> <span>09:00 - 20:00</span></li>
+        <li><span>Freitag</span> <span>09:00 - 18:30</span></li>
+        <li><span>Samstag</span> <span>08:00 - 13:00</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Kontaktdetails</h3>
+      <p><strong>Adresse:</strong><br>Hauptstraße [Nr], 89160 Dornstadt</p>
+      <br>
+      <p><strong>Telefon:</strong><br>07348 / 123 456</p>
+      <br>
+      <p><strong>E-Mail:</strong><br>info@friseur-dornstadt.de</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Salon Dornstadt | <a href="#" style="color: white; text-decoration: none;">Impressum</a> | <a href="#"
+                                                                                                               style="color: white; text-decoration: none;">Datenschutz</a>
+  </p>
+</footer>
+
+<script>
+  // Einfaches Script für flüssiges Scrollen
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
