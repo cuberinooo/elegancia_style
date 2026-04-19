@@ -42,12 +42,12 @@ jobs:
         if: steps.git-diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(dist): update dist folder after build"
           title: "chore(dist): update dist folder after build"
           body: "This PR updates the dist folder with the latest build output."
           branch: update-dist-after-build
           add-paths: dist
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
