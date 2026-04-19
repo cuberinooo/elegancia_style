@@ -30,7 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This uploads your whole repo (where your index.html is)
+          # This specifically sends the showcase folder to GitHub Pages
           path: 'showcase'
 
       - name: Deploy to GitHub Pages
