@@ -149,7 +149,7 @@ section {
   /* Wir verwenden eine dunkle Grafik und ein Overlay für das Ambiente */
   background-image:
     linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.95)), /* Dunkles Overlay */
-    url('img/dornstadt-abriss.png'); /* HIER DEINE GRAFIKDATEI EINTRAGEN */
+    url('../img/dornstadt-abriss.png'); /* HIER DEINE GRAFIKDATEI EINTRAGEN */
 
   background-position: center; /* Wichtig für den Abriss-Effekt */
   background-size: cover; /* Damit die Grafik nicht verzerrt wird */
