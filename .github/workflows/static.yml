@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # This specifically sends the root folder to GitHub Pages
-          path: '.'
+          path: 'src'
 
       - name: Deploy to GitHub Pages
         id: deployment
