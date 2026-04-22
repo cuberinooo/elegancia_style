@@ -30,8 +30,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This specifically sends the showcase folder to GitHub Pages
-          path: 'showcase'
+          # This specifically sends the root folder to GitHub Pages
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
