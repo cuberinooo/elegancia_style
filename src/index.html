@@ -3,12 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elegancia Style | Damen & Herren in Dornstadt</title>
+  <title>Elegancia StylStyle Der Inbegriff von Herren-Grooming</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Minor overrides for Barber-specific look */
+    .hero {
+      background-image:
+        linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)),
+        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=80');
+      position: relative;
+    }
+    .service-box {
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      transition: border 0.3s ease;
+    }
+    .service-box:hover {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    /* Barber Pole Animation */
+    .barber-pole {
+      width: 15px;
+      height: 100px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      background: repeating-linear-gradient(
+        45deg,
+        #ff4b2b,
+        #ff4b2b 10px,
+        #fff 10px,
+        #fff 20px,
+        #2b4bff 20px,
+        #2b4bff 30px,
+        #fff 30px,
+        #fff 40px
+      );
+      background-size: 100% 200%;
+      animation: barberPoleMove 2s linear infinite;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @keyframes barberPoleMove {
+      from { background-position: 0 0; }
+      to { background-position: 0 100%; }
+    }
+
+    @media (max-width: 900px) {
+      .barber-pole { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,55 +73,60 @@
   <div class="nav-links">
     <a href="#philosophie">Philosophie</a>
     <a href="#leistungen">Leistungen</a>
-    <a href="#salon">Salon</a>
+    <a href="#salon">Impressionen</a>
+    <a href="#kontakt">Kontakt</a>
   </div>
-  <a href="tel:+49734812345" class="btn-outline">Termin Buchen</a>
+  <a href="tel:+49734812345" class="btn-outline btn-scissor">
+    Termin Buchen <span class="scissor-icon">✂️</span>
+  </a>
 </nav>
 
 <header class="hero">
-  <span>Maßgeschneidertes Haar</span>
+  <div class="barber-pole"></div>
+  <div class="barber-pole" style="left: auto; right: 20px;"></div>
+  <span>Handwerkskunst & Tradition</span>
   <h1>Elegancia<br>Style</h1>
-  <a href="#leistungen" class="btn-outline" style="margin-top: 2rem; border: none; border-bottom: 1px solid var(--gold);">Entdecke unseren Stil</a>
+  <a href="#leistungen" class="btn-outline" style="margin-top: 2rem; border: none; border-bottom: 1px solid var(--gold);">Unsere Services entdecken</a>
 </header>
 
 <section id="philosophie" class="intro">
-  <p>Im Zentrum von Dornstadt zelebrieren wir exklusive Handwerkskunst für den Mann. Mit präzisen Schnitten, traditioneller Bartpflege und einem feinen Gespür für Ästhetik kreieren wir einen Look, der kompromisslos zu dir passt.</p>
+  <p>In einer Welt, die immer schneller wird, bieten wir dir den Rückzugsort, den du verdienst. Bei uns trifft <strong>traditionelles Barbierhandwerk</strong> auf moderne Ästhetik. Ein Ort für Männer, die Wert auf Perfektion und Entspannung legen.</p>
 </section>
 
 <section id="leistungen">
-  <h2 class="section-title">Unsere Expertise</h2>
+  <h2 class="section-title">Barber Services</h2>
   <div class="services-container">
     <div class="service-box">
-      <h3>Damen</h3>
-      <div class="service-item"><span>Waschen, Schneiden, Föhnen</span> <span>ab 55 €</span></div>
-      <div class="service-item"><span>Balayage & Styling</span> <span>ab 120 €</span></div>
-      <div class="service-item"><span>Ansatzfarbe</span> <span>ab 45 €</span></div>
-      <div class="service-item"><span>Intensivpflege & Kur</span> <span>ab 20 €</span></div>
+      <h3>Cuts & Shaves</h3>
+      <div class="service-item"><span>Gentleman's Cut</span> <span>ab 35 €</span></div>
+      <div class="service-item"><span>Skin Fade & Styling</span> <span>ab 40 €</span></div>
+      <div class="service-item"><span>Maschinenschnitt (Einfach)</span> <span>ab 22 €</span></div>
+      <div class="service-item"><span>Kopf-Nassrasur</span> <span>ab 30 €</span></div>
     </div>
     <div class="service-box">
-      <h3>Herren</h3>
-      <div class="service-item"><span>Maßgeschneiderter Haarschnitt</span> <span>ab 30 €</span></div>
-      <div class="service-item"><span>Maschinenschnitt</span> <span>ab 20 €</span></div>
-      <div class="service-item"><span>Bartrasur & Pflege</span> <span>ab 25 €</span></div>
-      <div class="service-item"><span>Komplettpaket (Haare & Bart)</span> <span>ab 50 €</span></div>
+      <h3>Beard & Wellness</h3>
+      <div class="service-item"><span>Bart-Trim & Konturen</span> <span>ab 20 €</span></div>
+      <div class="service-item"><span>Hot Towel Shave (Luxus)</span> <span>ab 35 €</span></div>
+      <div class="service-item"><span>Bart-Wellness Paket</span> <span>ab 45 €</span></div>
+      <div class="service-item"><span>The Full Experience (Hair & Beard)</span> <span>ab 65 €</span></div>
     </div>
   </div>
 </section>
 
 <section id="salon" style="padding: 0;">
   <div class="image-grid">
-    <div class="image-box"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=500&q=80" alt="Salon Vibe"></div>
-    <div class="image-box"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=800&q=80" alt="Herren Schnitt"></div>
-    <div class="image-box"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Damen Styling"></div>
+    <div class="image-box"><img src="https://images.unsplash.com/photo-1593702295094-2224b42337d1?auto=format&fit=crop&w=800&q=80" alt="Hot Towel Shave"></div>
+    <div class="image-box"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80" alt="Barber Tools"></div>
+    <div class="image-box"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=800&q=80" alt="Modern Haircut"></div>
   </div>
 </section>
 
-<footer>
+<footer id="kontakt">
   <div class="footer-grid">
     <div>
-      <h4>Kontakt</h4>
+      <h4>Standort</h4>
       <p>Kreuzstraße 8<br>89160 Dornstadt</p>
-      <p style="margin-top: 1rem;">Tel: 0175 4179313
+      <p style="margin-top: 1rem;">Tel: 0175 4179313</p>
     </div>
     <div>
       <h4>Öffnungszeiten</h4>
@@ -76,8 +135,8 @@
     </div>
     <div>
       <h4>Social</h4>
-      <p>Folge uns auf Instagram für<br>die neuesten Trends & Styles.</p>
-      <a href="https://www.instagram.com/elegancia_style1/" target="_blank" rel="noopener noreferrer" style="color: var(--gold); text-decoration: none; display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">@elegancia_style1</a>
+      <p>Folge uns auf Instagram für<br>Inspirationen & News.</p>
+      <a href="https://www.instagram.com/elegancia_style1/" target="_blank" rel="noopener noreferrer" style="color: var(--gold); text-decoration: none; display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">@elegancia_barber</a>
     </div>
   </div>
   <section class="map-section">
