@@ -12,12 +12,50 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-main);
   color: var(--text-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ACCESSIBILITY: skip link + focus states */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 1rem;
+  background: var(--gold);
+  color: var(--bg-main);
+  padding: 0.6rem 1.2rem;
+  z-index: 1000;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* NAVIGATION - Ultra Minimalistisch */
@@ -87,6 +125,156 @@ nav {
   color: var(--bg-main);
 }
 
+.btn-solid {
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  padding: 0.6rem 1.5rem;
+  color: var(--bg-main);
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-solid:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.text-link {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: opacity 0.3s;
+}
+
+.text-link:hover {
+  opacity: 0.7;
+}
+
+/* NAV TOGGLE (Hamburger) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text-light);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* NAV DRAWER (Mobile off-canvas menu) */
+.nav-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 199;
+}
+
+.nav-drawer-overlay[hidden] {
+  display: none;
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: var(--bg-sec);
+  border-left: 1px solid rgba(212, 175, 55, 0.2);
+  z-index: 200;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+.nav-drawer.is-open {
+  transform: translateX(0);
+}
+
+.nav-drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nav-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.nav-drawer-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.nav-drawer-links a:hover {
+  color: var(--gold);
+}
+
+.nav-drawer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+.nav-drawer-info .btn-solid,
+.nav-drawer-info .btn-outline {
+  text-align: center;
+}
+
+.nav-drawer-hours {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
 /* HERO SEKTION - Groß und Imposant */
 .hero {
   height: 100vh;
@@ -120,6 +308,137 @@ nav {
   line-height: 1.1;
 }
 
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero .text-link {
+  margin-top: 1rem;
+}
+
+/* BARBER POLE (dekorative Säulen im Hero) */
+.barber-pole {
+  width: 15px;
+  height: 100px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #ff4b2b,
+    #ff4b2b 10px,
+    #fff 10px,
+    #fff 20px,
+    #2b4bff 20px,
+    #2b4bff 30px,
+    #fff 30px,
+    #fff 40px
+  );
+  background-size: 100% 200%;
+  animation: barberPoleMove 2s linear infinite;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes barberPoleMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+/* STATUS BADGE (Geöffnet/Geschlossen) */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.status-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.status-badge.is-open {
+  border-color: rgba(70, 200, 120, 0.4);
+  color: #7ee2a0;
+}
+
+.status-badge.is-open::before {
+  background: #46c878;
+  box-shadow: 0 0 6px rgba(70, 200, 120, 0.8);
+}
+
+.status-badge.is-closed {
+  border-color: rgba(212, 175, 55, 0.3);
+  color: var(--gold);
+}
+
+.status-badge.is-closed::before {
+  background: var(--gold);
+}
+
+/* QUICK INFO BAR (Adresse / Öffnungszeiten / Telefon) */
+.quick-info-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.quick-info-item {
+  background: var(--bg-sec);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.75rem 2rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+a.quick-info-item:hover {
+  background: #1c1c1c;
+}
+
+.quick-info-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.quick-info-item strong {
+  display: block;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.quick-info-item em {
+  display: block;
+  font-style: normal;
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* ALLGEMEINE ABSCHNITTE */
 section {
   padding: 8rem 5%;
@@ -149,7 +468,7 @@ section {
   /* Wir verwenden eine dunkle Grafik und ein Overlay für das Ambiente */
   background-image:
     linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.95)), /* Dunkles Overlay */
-    url('../img/dornstadt-abriss.png'); /* HIER DEINE GRAFIKDATEI EINTRAGEN */
+    url('../img/dornstadt-abriss.webp');
 
   background-position: center; /* Wichtig für den Abriss-Effekt */
   background-size: cover; /* Damit die Grafik nicht verzerrt wird */
@@ -177,6 +496,25 @@ section {
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.service-box {
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border 0.3s ease;
+}
+
+.service-box:hover {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.services-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  max-width: 1200px;
+  margin: 2.5rem auto 0 auto;
 }
 
 .service-box h3 {
@@ -251,6 +589,32 @@ footer {
   font-size: 0.9rem;
 }
 
+.footer-grid address {
+  font-style: normal;
+}
+
+.footer-grid a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-grid a:hover {
+  color: var(--gold);
+}
+
+.social-link {
+  color: var(--gold);
+  text-decoration: none;
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .copyright {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -263,12 +627,63 @@ footer {
   height: 400px;
   width: 100%;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
 }
 
 .map-section iframe {
   width: 60%;
-  height: 70%;
+  height: 100%;
   border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+.map-directions-link {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: var(--bg-main);
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border: 1px solid var(--gold);
+}
+
+/* STICKY MOBILE CTA BAR */
+.sticky-cta {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 150;
+  background: rgba(10, 10, 10, 0.97);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.75rem calc(0.75rem + env(safe-area-inset-left)) calc(0.75rem + env(safe-area-inset-bottom)) calc(0.75rem + env(safe-area-inset-right));
+  gap: 0.75rem;
+}
+
+.sticky-cta-btn {
+  flex: 1;
+  text-align: center;
+  background: var(--gold);
+  color: var(--bg-main);
+  text-decoration: none;
+  padding: 0.9rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.sticky-cta-btn--outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-weight: 400;
 }
 
 /* RESPONSIVE */
@@ -277,7 +692,29 @@ footer {
   .services-container { grid-template-columns: 1fr; }
   .image-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-grid { grid-template-columns: 1fr; text-align: center; }
-  .nav-links { display: none; }
+  .nav-links,
+  nav .nav-call { display: none; }
+  .nav-toggle { display: flex; }
+
+  section { padding: 4rem 6%; }
+  .section-title { font-size: 2rem; margin-bottom: 2.5rem; }
+
+  .intro { height: auto; padding: 3.5rem 6%; }
+
+  .quick-info-bar { grid-template-columns: 1fr; }
+
+  .map-section { height: 320px; }
+  .map-section iframe { width: 100%; }
+  .map-directions-link { position: static; display: block; text-align: center; margin: 0 auto 0.5rem auto; width: fit-content; }
+
+  .sticky-cta { display: flex; }
+  footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.25rem; letter-spacing: 2px; }
+  .hero span { font-size: 1.1rem; }
+  .barber-pole { display: none; }
 }
 
 /* Scissor Hover Animation */

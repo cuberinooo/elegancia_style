@@ -1,12 +1,12 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "Elegancia Style",
+  "name": "Elegancia Style Barbershop",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
   "start_url": "/?utm_source=homescreen",
-  "background_color": "#fafafa",
-  "theme_color": "#fafafa"
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a"
 }
