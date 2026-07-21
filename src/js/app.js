@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavDrawer();
   initStatusBadge();
+  initLegalModals();
+  initCookieConsent();
 });
 
 function initNavDrawer() {
@@ -101,3 +103,124 @@ function initStatusBadge() {
     : 'Geschlossen';
   badge.classList.add('is-closed');
 }
+
+function initLegalModals() {
+  const modalImpressum = document.getElementById('modal-impressum');
+  const modalDatenschutz = document.getElementById('modal-datenschutz');
+  const btnImpressum = document.getElementById('btn-impressum');
+  const btnDatenschutz = document.getElementById('btn-datenschutz');
+
+  const openModal = (modal) => {
+    if (!modal) return;
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = (modal) => {
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (btnImpressum) btnImpressum.addEventListener('click', () => openModal(modalImpressum));
+  if (btnDatenschutz) btnDatenschutz.addEventListener('click', () => openModal(modalDatenschutz));
+
+  document.querySelectorAll('.modal-overlay').forEach((modal) => {
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modal));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(modal);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal(modalImpressum);
+      closeModal(modalDatenschutz);
+    }
+  });
+}
+
+function initCookieConsent() {
+  const banner = document.getElementById('cookie-banner');
+  const mapsIframe = document.getElementById('google-maps-iframe');
+  const mapsPlaceholder = document.getElementById('maps-placeholder');
+  const btnEnableMaps = document.getElementById('btn-enable-maps');
+  const btnAcceptAll = document.getElementById('btn-cookie-accept-all');
+  const btnAcceptSelection = document.getElementById('btn-cookie-accept-selection');
+  const btnRejectAll = document.getElementById('btn-cookie-reject-all');
+  const btnSettings = document.getElementById('btn-cookie-settings');
+  const consentExternalInput = document.getElementById('consent-external');
+
+  const CONSENT_KEY = 'elegancia_cookie_consent_v1';
+
+  const applyConsent = (consent) => {
+    if (consent.external) {
+      if (mapsIframe && mapsIframe.dataset.src) {
+        mapsIframe.src = mapsIframe.dataset.src;
+      }
+      if (mapsPlaceholder) {
+        mapsPlaceholder.hidden = true;
+      }
+    } else {
+      if (mapsIframe) {
+        mapsIframe.removeAttribute('src');
+      }
+      if (mapsPlaceholder) {
+        mapsPlaceholder.hidden = false;
+      }
+    }
+  };
+
+  const saveConsent = (externalAllowed) => {
+    const consent = {
+      essential: true,
+      external: externalAllowed,
+      timestamp: new Date().toISOString(),
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+    applyConsent(consent);
+    if (banner) banner.hidden = true;
+  };
+
+  const storedConsentStr = localStorage.getItem(CONSENT_KEY);
+  if (storedConsentStr) {
+    try {
+      const storedConsent = JSON.parse(storedConsentStr);
+      applyConsent(storedConsent);
+      if (consentExternalInput) consentExternalInput.checked = storedConsent.external;
+    } catch {
+      if (banner) banner.hidden = false;
+    }
+  } else {
+    if (banner) banner.hidden = false;
+  }
+
+  if (btnAcceptAll) {
+    btnAcceptAll.addEventListener('click', () => saveConsent(true));
+  }
+
+  if (btnAcceptSelection) {
+    btnAcceptSelection.addEventListener('click', () => {
+      const externalAllowed = consentExternalInput ? consentExternalInput.checked : true;
+      saveConsent(externalAllowed);
+    });
+  }
+
+  if (btnRejectAll) {
+    btnRejectAll.addEventListener('click', () => saveConsent(false));
+  }
+
+  if (btnEnableMaps) {
+    btnEnableMaps.addEventListener('click', () => saveConsent(true));
+  }
+
+  if (btnSettings) {
+    btnSettings.addEventListener('click', () => {
+      if (banner) banner.hidden = false;
+    });
+  }
+}
+
