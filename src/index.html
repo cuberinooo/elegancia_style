@@ -64,6 +64,11 @@
         "logo": "https://elegancia-style.de/img/icon-new.jpg",
         "telephone": "+49 7348 6045956",
         "priceRange": "6€–90€",
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": "https://app.termino.de/book/elegancia-style",
+          "name": "Termin online buchen"
+        },
         "currenciesAccepted": "EUR",
         "address": {
           "@type": "PostalAddress",
@@ -145,6 +150,9 @@
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M20 10.2c0 5.8-8 11.8-8 11.8s-8-6-8-11.8a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/>
   </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>
+  </symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/>
   </symbol>
@@ -181,6 +189,7 @@
     </a>
 
     <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#termin">Online buchen</a>
       <a href="#preise">Preise</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -200,8 +209,9 @@
 <div id="nav-drawer" class="nav-drawer" aria-hidden="true" aria-label="Mobiles Menü">
   <button type="button" class="nav-drawer-close" aria-label="Menü schließen">&times;</button>
   <nav class="nav-drawer-links" aria-label="Mobile Navigation">
-    <a href="#preise">Preise <span>01</span></a>
-    <a href="#kontakt">Kontakt <span>02</span></a>
+    <a href="#termin">Online buchen <span>01</span></a>
+    <a href="#preise">Preise <span>02</span></a>
+    <a href="#kontakt">Kontakt <span>03</span></a>
   </nav>
   <div class="nav-drawer-info">
     <a href="tel:+4973486045956" class="btn btn-solid btn-block">
@@ -240,13 +250,13 @@
         </p>
 
         <div class="hero-ctas">
-          <a href="tel:+4973486045956" class="btn btn-solid">
+          <a href="#termin" class="btn btn-solid">
+            <svg aria-hidden="true"><use href="#i-calendar"></use></svg>
+            Termin online buchen
+          </a>
+          <a href="tel:+4973486045956" class="btn btn-outline">
             <svg aria-hidden="true"><use href="#i-phone"></use></svg>
             Termin anrufen
-          </a>
-          <a href="#preise" class="btn btn-outline">
-            <svg aria-hidden="true"><use href="#i-scissors"></use></svg>
-            Preise ansehen
           </a>
         </div>
 
@@ -355,7 +365,7 @@
       <svg aria-hidden="true"><use href="#i-info"></use></svg>
       <p>
         <strong>Hinweis für unsere Gäste:</strong> Damen und Herren bitten wir, vorab einen Termin zu
-        vereinbaren. Gäste mit Termin werden bevorzugt bedient.
+        vereinbaren – <a href="#termin">online</a> oder telefonisch. Gäste mit Termin werden bevorzugt bedient.
       </p>
     </div>
 
@@ -412,6 +422,27 @@
       Alle Preise in Euro inkl. MwSt. Bei <strong>Coloration, Strähnen und Glossing</strong> richtet sich
       der Endpreis nach Haarlänge und Aufwand. <strong>Schönheit ist unsere Leidenschaft.</strong>
     </p>
+  </div>
+</section>
+
+<!-- ============================== ONLINE BUCHEN ============================== -->
+<section class="section section--alt" id="termin">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Online-Termin</p>
+      <h2 class="section-title">Ihr Wunschtermin, <em>in einer Minute gebucht</em></h2>
+      <p class="section-lead">Leistung wählen, Lieblingsfriseur oder „egal wer“, freie Zeit antippen – fertig. Die Bestätigung kommt per E-Mail.</p>
+    </div>
+
+    <!-- Termino booking widget. The script is loaded by js/app.js (initBookingWidget), which
+         passes this site's cookie choice to the widget via data-consent. -->
+    <div class="booking-embed" data-reveal>
+      <div id="termino-booking" data-termino="elegancia-style" data-title="Termin bei Elegancia Style buchen"></div>
+      <noscript>
+        <p>Online-Buchung: <a href="https://app.termino.de/book/elegancia-style">app.termino.de/book/elegancia-style</a></p>
+      </noscript>
+    </div>
+    <p class="booking-alt">Lieber persönlich? Rufen Sie uns an: <a href="tel:+4973486045956">07348 6045956</a></p>
   </div>
 </section>
 
@@ -481,9 +512,12 @@
 <section class="cta-band">
   <div class="container">
     <h2>Bereit für den nächsten Termin?</h2>
-    <p>Ein kurzer Anruf reicht – wir finden gemeinsam einen Zeitpunkt, der in Ihren Tag passt.</p>
+    <p>Online in einer Minute gebucht – oder ein kurzer Anruf, und wir finden gemeinsam einen Zeitpunkt.</p>
     <div class="hero-ctas">
-      <a href="tel:+4973486045956" class="btn btn-solid">
+      <a href="#termin" class="btn btn-solid">
+        <svg aria-hidden="true"><use href="#i-calendar"></use></svg> Online buchen
+      </a>
+      <a href="tel:+4973486045956" class="btn btn-outline">
         <svg aria-hidden="true"><use href="#i-phone"></use></svg> 07348 6045956
       </a>
       <a href="https://www.google.com/maps/dir/?api=1&destination=Kreuzstra%C3%9Fe+8%2C+89160+Dornstadt" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -522,7 +556,10 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta" role="region" aria-label="Schnellkontakt">
-  <a href="tel:+4973486045956" class="btn btn-solid btn-sm">
+  <a href="#termin" class="btn btn-solid btn-sm">
+    <svg aria-hidden="true"><use href="#i-calendar"></use></svg> Buchen
+  </a>
+  <a href="tel:+4973486045956" class="btn btn-outline btn-sm">
     <svg aria-hidden="true"><use href="#i-phone"></use></svg> Anrufen
   </a>
   <a href="https://www.google.com/maps/dir/?api=1&destination=Kreuzstra%C3%9Fe+8%2C+89160+Dornstadt" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
@@ -674,6 +711,16 @@
       <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noopener noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/</a> und <a href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/" target="_blank" rel="noopener noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/sccs/</a>.</p>
       <p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
       <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noopener noreferrer">https://www.dataprivacyframework.gov/participant/5780</a>.</p>
+
+      <h3>7. Online-Terminbuchung</h3>
+      <h4>Termino</h4>
+      <p>Für die Online-Terminbuchung binden wir das Buchungsformular des Dienstes „Termino“ ein (app.termino.de). Wenn Sie einen Termin buchen, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, optional Telefonnummer) sowie den gewählten Termin, die Leistung und die Mitarbeiterin bzw. den Mitarbeiter. Die Daten verwenden wir ausschließlich zur Durchführung und Verwaltung des Termins, für die Terminbestätigung, eine Erinnerung vor dem Termin und – falls nötig – für Rückfragen oder Absagen.</p>
+      <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen bzw. Vertragserfüllung). Die Daten werden gelöscht, sobald sie für die Terminverwaltung nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten bestehen. Den Termin können Sie über den Link in Ihrer Bestätigungs-E-Mail einsehen und – bis zur angegebenen Frist – selbst absagen.</p>
+      <p>Termino verarbeitet die Daten in unserem Auftrag; mit dem Anbieter besteht ein Vertrag über Auftragsverarbeitung (Art. 28 DSGVO). Die Daten werden auf Servern in der EU gespeichert. Der Versand der E-Mails erfolgt über den E-Mail-Dienst von IONOS (IONOS SE, Elgendorfer Str. 57, 56410 Montabaur).</p>
+      <h4>Lokale Speicherung (Komfort bei der Online-Buchung)</h4>
+      <p>Nur wenn Sie im Cookie-Banner „Komfort bei der Online-Buchung“ erlauben, speichert das Buchungsformular Ihre Kontaktdaten und Ihre kommenden Termine im lokalen Speicher Ihres Browsers, damit Sie beim nächsten Besuch schneller buchen und Ihre Termine sehen können. Diese Daten bleiben auf Ihrem Gerät und werden nicht an uns übertragen. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Sie können die Einwilligung jederzeit über „Cookie-Einstellungen“ widerrufen; die gespeicherten Daten werden dann gelöscht.</p>
+      <h4>Cloudflare Turnstile</h4>
+      <p>Zum Schutz des Buchungsformulars vor automatisierten Anfragen (Spam, Bots) nutzen wir „Turnstile“ der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA. Dabei werden technische Daten Ihres Browsers (u. a. IP-Adresse und Browsermerkmale) an Cloudflare übermittelt und dort ausgewertet. Rechtsgrundlage ist unser berechtigtes Interesse an der Sicherheit des Buchungsformulars (Art. 6 Abs. 1 lit. f DSGVO). Cloudflare ist nach dem „EU-US Data Privacy Framework“ (DPF) zertifiziert. Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/privacypolicy/</a>.</p>
     </div>
   </div>
 </div>
@@ -682,7 +729,7 @@
 <div id="cookie-banner" class="cookie-banner" hidden>
   <div class="cookie-banner-content">
     <h3>Cookie- &amp; Datenschutz-Einstellungen</h3>
-    <p>Wir nutzen Cookies und externe Dienste (Google Maps), um Ihnen die bestmögliche Erfahrung zu bieten. Sie können festlegen, welche Kategorien Sie zulassen möchten.</p>
+    <p>Wir nutzen Cookies, lokale Speicherung und externe Dienste (Google Maps), um Ihnen die bestmögliche Erfahrung zu bieten. Sie können festlegen, welche Kategorien Sie zulassen möchten.</p>
     <div class="cookie-options">
       <label class="cookie-option">
         <input type="checkbox" checked disabled>
@@ -691,6 +738,10 @@
       <label class="cookie-option">
         <input type="checkbox" id="consent-external">
         <span><strong>Externe Medien</strong> — Google Maps</span>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" id="consent-booking">
+        <span><strong>Komfort bei der Online-Buchung</strong> — Ihre Kontaktdaten und kommenden Termine in diesem Browser merken</span>
       </label>
     </div>
     <div class="cookie-actions">
