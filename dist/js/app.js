@@ -421,10 +421,10 @@ function initCookieConsent() {
 }
 
 /* ------------------------------------------------------- online booking */
-// Vakanto widget (https://app.vakanto.app). Loaded here rather than with a static <script> so
+// Vakanto widget (https://fe.vakanto.app). Loaded here rather than with a static <script> so
 // the visitor's choice from our cookie banner is passed in before the widget mounts; later
 // changes are forwarded by applyConsent() via window.Vakanto.setConsent().
-const VAKANTO_URL = 'https://app.vakanto.app';
+const VAKANTO_URL = 'https://fe.vakanto.app';
 
 function initBookingWidget() {
   const container = document.getElementById('vakanto-booking');
