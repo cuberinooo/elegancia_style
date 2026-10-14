@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaq();
   initLegalModals();
   initCookieConsent();
-  initBookingWidget();
   initFooterYear();
 });
 
@@ -333,13 +332,10 @@ function initCookieConsent() {
   const btnRejectAll = document.getElementById('btn-cookie-reject-all');
   const btnSettings = document.getElementById('btn-cookie-settings');
   const consentExternalInput = document.getElementById('consent-external');
-  const consentBookingInput = document.getElementById('consent-booking');
 
   const CONSENT_KEY = 'elegancia_cookie_consent_v1';
 
   const applyConsent = (consent) => {
-    // Online booking widget (Vakanto) follows this banner instead of showing its own.
-    if (window.Vakanto) window.Vakanto.setConsent(Boolean(consent.booking));
     if (consent.external) {
       if (mapsIframe && mapsIframe.dataset.src) {
         mapsIframe.src = mapsIframe.dataset.src;
@@ -357,11 +353,10 @@ function initCookieConsent() {
     }
   };
 
-  const saveConsent = (externalAllowed, bookingAllowed) => {
+  const saveConsent = (externalAllowed) => {
     const consent = {
       essential: true,
       external: externalAllowed,
-      booking: bookingAllowed,
       timestamp: new Date().toISOString(),
     };
     try {
@@ -385,7 +380,6 @@ function initCookieConsent() {
       const storedConsent = JSON.parse(storedConsentStr);
       applyConsent(storedConsent);
       if (consentExternalInput) consentExternalInput.checked = Boolean(storedConsent.external);
-      if (consentBookingInput) consentBookingInput.checked = Boolean(storedConsent.booking);
     } catch {
       if (banner) banner.hidden = false;
     }
@@ -394,23 +388,22 @@ function initCookieConsent() {
   }
 
   if (btnAcceptAll) {
-    btnAcceptAll.addEventListener('click', () => saveConsent(true, true));
+    btnAcceptAll.addEventListener('click', () => saveConsent(true));
   }
 
   if (btnAcceptSelection) {
     btnAcceptSelection.addEventListener('click', () => {
       const externalAllowed = consentExternalInput ? consentExternalInput.checked : true;
-      const bookingAllowed = consentBookingInput ? consentBookingInput.checked : false;
-      saveConsent(externalAllowed, bookingAllowed);
+      saveConsent(externalAllowed);
     });
   }
 
   if (btnRejectAll) {
-    btnRejectAll.addEventListener('click', () => saveConsent(false, false));
+    btnRejectAll.addEventListener('click', () => saveConsent(false));
   }
 
   if (btnEnableMaps) {
-    btnEnableMaps.addEventListener('click', () => saveConsent(true, Boolean(consentBookingInput && consentBookingInput.checked)));
+    btnEnableMaps.addEventListener('click', () => saveConsent(true));
   }
 
   if (btnSettings) {
@@ -418,30 +411,6 @@ function initCookieConsent() {
       if (banner) banner.hidden = false;
     });
   }
-}
-
-/* ------------------------------------------------------- online booking */
-// Vakanto widget (https://fe.vakanto.app). Loaded here rather than with a static <script> so
-// the visitor's choice from our cookie banner is passed in before the widget mounts; later
-// changes are forwarded by applyConsent() via window.Vakanto.setConsent().
-const VAKANTO_URL = 'https://fe.vakanto.app';
-
-function initBookingWidget() {
-  const container = document.getElementById('vakanto-booking');
-  if (!container) return;
-
-  let booking = false;
-  try {
-    booking = Boolean(JSON.parse(localStorage.getItem('elegancia_cookie_consent_v1') || '{}').booking);
-  } catch {
-    booking = false;
-  }
-  container.dataset.consent = booking ? 'comfort' : 'essential';
-
-  const script = document.createElement('script');
-  script.src = `${VAKANTO_URL}/embed.js`;
-  script.async = true;
-  document.body.appendChild(script);
 }
 
 /* ------------------------------------------------------------ footer year */

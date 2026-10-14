@@ -1144,46 +1144,6 @@ a.quick-info-item:hover {
   margin-top: 0.22rem;
 }
 
-.customer-notice a {
-  color: var(--gold-300);
-  text-underline-offset: 3px;
-}
-
-/* ---------- Online booking (Vakanto widget) ---------- */
-.booking-embed {
-  max-width: 760px;
-  margin-inline: auto;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-soft);
-  background: #fafaf9;
-  min-height: 420px;
-}
-
-.booking-embed iframe {
-  display: block;
-}
-
-.booking-embed noscript p {
-  padding: 2rem;
-  color: #0b0a09;
-  text-align: center;
-}
-
-.booking-alt {
-  margin-top: 1.25rem;
-  text-align: center;
-  font-size: 0.94rem;
-  font-weight: 300;
-  color: var(--text-muted);
-}
-
-.booking-alt a {
-  color: var(--gold-300);
-  white-space: nowrap;
-}
-
 .customer-notice strong {
   color: var(--text);
   font-weight: 600;
