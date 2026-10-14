@@ -338,8 +338,8 @@ function initCookieConsent() {
   const CONSENT_KEY = 'elegancia_cookie_consent_v1';
 
   const applyConsent = (consent) => {
-    // Online booking widget (Termino) follows this banner instead of showing its own.
-    if (window.Termino) window.Termino.setConsent(Boolean(consent.booking));
+    // Online booking widget (Vakanto) follows this banner instead of showing its own.
+    if (window.Vakanto) window.Vakanto.setConsent(Boolean(consent.booking));
     if (consent.external) {
       if (mapsIframe && mapsIframe.dataset.src) {
         mapsIframe.src = mapsIframe.dataset.src;
@@ -421,13 +421,13 @@ function initCookieConsent() {
 }
 
 /* ------------------------------------------------------- online booking */
-// Termino widget (https://app.termino.de). Loaded here rather than with a static <script> so
+// Vakanto widget (https://app.vakanto.app). Loaded here rather than with a static <script> so
 // the visitor's choice from our cookie banner is passed in before the widget mounts; later
-// changes are forwarded by applyConsent() via window.Termino.setConsent().
-const TERMINO_URL = 'https://app.termino.de';
+// changes are forwarded by applyConsent() via window.Vakanto.setConsent().
+const VAKANTO_URL = 'https://app.vakanto.app';
 
 function initBookingWidget() {
-  const container = document.getElementById('termino-booking');
+  const container = document.getElementById('vakanto-booking');
   if (!container) return;
 
   let booking = false;
@@ -439,7 +439,7 @@ function initBookingWidget() {
   container.dataset.consent = booking ? 'comfort' : 'essential';
 
   const script = document.createElement('script');
-  script.src = `${TERMINO_URL}/embed.js`;
+  script.src = `${VAKANTO_URL}/embed.js`;
   script.async = true;
   document.body.appendChild(script);
 }
